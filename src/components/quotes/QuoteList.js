@@ -16,10 +16,10 @@ const sortQuotes = (quotes, ascending) => {
 const QuoteList = (props) => {
   const history = useHistory();
   const location = useLocation();
-  console.log(location)
+  console.log('LOCATION',location)
   //new URLSearchParams() , is basically a class defined in JS which is used to serach url in particular parameter
 
-  const queryParams = new URLSearchParams(location.search); //it returns object of key value pair of queryParameter
+  const queryParams = new URLSearchParams(location.search); //it returns object of key value pair of queryParameter, because location.search contains url of queryParameter
   const isSortAscending = queryParams.get("sort") === "asc";
 
   const sortedQuotes = sortQuotes(props.quotes, isSortAscending);
@@ -62,3 +62,8 @@ export default QuoteList;
 // history.push("/quotes?sort=" + (isSortAscending ? "desc" : "asc"));
 //TO  
 //history.push(`${location.pathname}?sort=` + (isSortAscending ? "desc" : "asc"));
+//TO
+// history.push({
+//   pathname:location.pathname,
+//   search:`?sort=${(isSortAscending ? "desc" : "asc")}`
+// })
